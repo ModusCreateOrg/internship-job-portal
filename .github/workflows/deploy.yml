@@ -1,0 +1,25 @@
+name: Deploy
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '10'
+
+      - name: Installs dependencies
+        run: npm install
+
+      - name: Run build
+        run: npm run build
+
+      - name: Run unit tests
+        run: npm run test
+
+      - name: Deploy
+        run: npm run deploy
