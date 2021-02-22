@@ -51,11 +51,6 @@
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run eslint && npm run test"
-    }
-  },
   "jest": {
     "collectCoverageFrom": [
       "<rootDir>/src/**/*.js",
