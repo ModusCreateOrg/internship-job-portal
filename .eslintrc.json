@@ -4,6 +4,12 @@
         "es2021": true,
         "jest/globals": true
     },
+    "ignorePatterns": [
+        "src/setupTests.js",
+        "src/reportWebVitals.js",
+        "build/*",
+        "coverage/*"
+    ],
     "extends": [
         "plugin:react/recommended",
         "airbnb"
