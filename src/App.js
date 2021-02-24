@@ -5,29 +5,23 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect,
 } from 'react-router-dom';
 import apolloClient from './apollo';
-import English from './English';
-import Portuguese from './Portuguese';
-import Spanish from './Spanish';
-import Home from './Home';
+import Login from './components/auth/Login';
+import Home from './components/default/Home';
 
 function App() {
   return (
     <ApolloProvider client={apolloClient}>
       <Router>
         <Switch>
+          <Redirect exact from="/" to="/login" />
+          <Route path="/login">
+            <Login />
+          </Route>
           <Route path="/home">
             <Home />
-          </Route>
-          <Route path="/english">
-            <English />
-          </Route>
-          <Route path="/portuguese">
-            <Portuguese />
-          </Route>
-          <Route path="/spanish">
-            <Spanish />
           </Route>
         </Switch>
       </Router>
