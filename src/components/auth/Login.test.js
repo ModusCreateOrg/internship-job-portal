@@ -6,10 +6,10 @@ test('allows the user to login successfully', async () => {
 
   // fill out the form
   fireEvent.change(screen.getByLabelText('Username'), {
-    target: {value: 'chuck'},
+    target: {value: 'demo'},
   })
   fireEvent.change(screen.getByLabelText('Password'), {
-    target: {value: 'norris'},
+    target: {value: 'password'},
   })
 
   fireEvent.click(screen.getByRole('button', {name: 'Login'}))
