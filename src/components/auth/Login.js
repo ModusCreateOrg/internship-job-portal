@@ -141,7 +141,7 @@ export default function SimpleCard() {
                     to="/home"
                     variant="body2"
                   >
-                    Sign Up
+                    Register Now
                   </Link>
                 </Typography>
               </form>
