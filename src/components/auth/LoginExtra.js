@@ -1,4 +1,4 @@
-import React from 'react';
+{/* import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
@@ -152,13 +152,6 @@ const useStyles = makeStyles({
   },
 });
 
-/*  const cardStyle = {
-  display: 'block',
-  width: '30rem',
-  transitionDuration: '0.3s',
-  height: '30rem',
-};  */
-
 export default function SimpleCard() {
   const classes = useStyles();
 
@@ -185,4 +178,4 @@ export default function SimpleCard() {
       </CardActions>
     </Card>
   );
-}
+} */ }

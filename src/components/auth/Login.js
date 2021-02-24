@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import {
@@ -8,7 +7,6 @@ import {
   Card,
   CardContent,
   Container,
-  Link,
   TextField,
   Typography,
   makeStyles,
@@ -42,7 +40,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function SimpleCard() {
+function Login() {
   const classes = useStyles();
 
   return (
@@ -92,6 +90,7 @@ export default function SimpleCard() {
                   </Typography>
                 </Box>
                 <TextField
+                  id="Username"
                   error={Boolean(touched.username && errors.username)}
                   fullWidth
                   helperText={touched.username && errors.username}
@@ -105,6 +104,7 @@ export default function SimpleCard() {
                   variant="outlined"
                 />
                 <TextField
+                  id="Password"
                   error={Boolean(touched.password && errors.password)}
                   fullWidth
                   helperText={touched.password && errors.password}
@@ -119,6 +119,7 @@ export default function SimpleCard() {
                 />
                 <Box my={2}>
                   <Button
+                    id="Submit"
                     color="secondary"
                     disabled={isSubmitting}
                     fullWidth
@@ -135,14 +136,6 @@ export default function SimpleCard() {
                 >
                   Don&apos;t Have an Account?
                   {' '}
-                  <Link
-                    color="secondary"
-                    component={RouterLink}
-                    to="/"
-                    variant="body2"
-                  >
-                    Register Now
-                  </Link>
                 </Typography>
               </form>
             )}
@@ -152,3 +145,5 @@ export default function SimpleCard() {
     </Card>
   );
 }
+
+export default Login;
