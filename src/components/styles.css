@@ -1,0 +1,7 @@
+body {
+  background: linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%);
+  font-family: -apple-system, BlinkMacSystemFont, "avenir next", avenir,
+    "helvetica neue", helvetica, ubuntu, roboto, noto, "segoe ui", arial,
+    sans-serif;
+  padding: 0 20px;
+}
