@@ -138,7 +138,7 @@ export default function SimpleCard() {
                   <Link
                     color="secondary"
                     component={RouterLink}
-                    to="/home"
+                    to="/"
                     variant="body2"
                   >
                     Register Now

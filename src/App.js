@@ -9,7 +9,6 @@ import {
 } from 'react-router-dom';
 import apolloClient from './apollo';
 import Login from './components/auth/Login';
-import Home from './components/default/Home';
 
 function App() {
   return (
@@ -19,9 +18,6 @@ function App() {
           <Redirect exact from="/" to="/login" />
           <Route path="/login">
             <Login />
-          </Route>
-          <Route path="/home">
-            <Home />
           </Route>
         </Switch>
       </Router>
