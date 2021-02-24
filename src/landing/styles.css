@@ -1,0 +1,19 @@
+.landing-page{
+    margin: auto;
+    width: 50%;
+}
+
+.landing-page-content{
+    text-align: center;
+}
+
+.login-register-forms{
+    border: 1px solid grey;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+.show-checkbox{
+    font-size: small;
+    color: #535353;
+}
