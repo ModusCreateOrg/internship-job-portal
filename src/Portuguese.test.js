@@ -4,5 +4,5 @@ import Portuguese from './Portuguese';
 
 test('renders the ola mundo button', () => {
   render(<Portuguese />);
-  expect(screen.getByText('Olá Mundo!')).toBeInTheDocument();
+  expect(screen.getByText('Olá Mundo, de Santa Catarina!')).toBeInTheDocument();
 });
