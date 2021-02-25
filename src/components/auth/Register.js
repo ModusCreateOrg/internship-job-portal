@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import {
@@ -7,6 +8,7 @@ import {
   Card,
   CardContent,
   Container,
+  Link,
   TextField,
   Typography,
   makeStyles,
@@ -70,11 +72,11 @@ function Register() {
               <form onSubmit={handleSubmit}>
                 <Box mb={3}>
                   <Typography align="center" color="textPrimary" variant="h4">
-                    Welcome
+                    Register
                   </Typography>
 
                   <Typography align="center" color="textSecondary" variant="body1">
-                    Enter the Modus Job Portal
+                    Create an Account
                   </Typography>
                 </Box>
                 <TextField
@@ -115,12 +117,15 @@ function Register() {
                     type="submit"
                     variant="contained"
                   >
-                    Login
+                    Register
                   </Button>
                 </Box>
                 <Typography color="textSecondary" variant="body2">
-                  Don&apos;t Have an Account?
+                  Already Have an Account?
                   {' '}
+                  <Link component={RouterLink} to="/login" variant="body2">
+                    Login
+                  </Link>
                 </Typography>
               </form>
             )}

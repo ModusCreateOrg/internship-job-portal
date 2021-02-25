@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import {
@@ -7,6 +8,7 @@ import {
   Card,
   CardContent,
   Container,
+  Link,
   TextField,
   Typography,
   makeStyles,
@@ -121,6 +123,9 @@ function Login() {
                 <Typography color="textSecondary" variant="body2">
                   Don&apos;t Have an Account?
                   {' '}
+                  <Link component={RouterLink} to="/register" variant="body2">
+                    Register Now
+                  </Link>
                 </Typography>
               </form>
             )}
