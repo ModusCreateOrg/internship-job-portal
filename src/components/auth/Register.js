@@ -34,7 +34,7 @@ const useStyles = makeStyles({
   },
 });
 
-function Login() {
+function Register() {
   const classes = useStyles();
 
   return (
@@ -131,4 +131,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;
