@@ -1,52 +1,47 @@
 import React from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import {
   Box,
   Button,
-  Card,
   CardContent,
-  Container,
+  Link,
+  Grid,
   TextField,
   Typography,
   makeStyles,
 } from '@material-ui/core';
 
-import './styles.css';
-
 const useStyles = makeStyles({
   root: {
     background: '#f1f1f1',
-    margin: 'auto',
     width: '30rem',
     height: '30rem',
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-  },
-  box: {
-    margin: 'auto',
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-  },
-  title: {
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
   },
 });
+
+const margin = 3;
 
 function Login() {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
-      <CardContent>
-        <Container className={classes.box}>
+    <Grid
+      container
+      alignItems="center"
+      direction="column"
+      justify="center"
+      style={{ minHeight: '100vh' }}
+    >
+      <Grid
+        container
+        alignItems="center"
+        direction="column"
+        justify="center"
+        className={classes.root}
+      >
+        <CardContent>
           <Formik
             initialValues={{
               username: '',
@@ -61,7 +56,7 @@ function Login() {
                 .required('Password is required'),
             })}
             onSubmit={(data) => {
-              alert(JSON.stringify(data));
+              console.log(data);
             }}
           >
             {({
@@ -74,13 +69,13 @@ function Login() {
               values,
             }) => (
               <form onSubmit={handleSubmit}>
-                <Box mb={3}>
+                <Box mb={margin}>
                   <Typography align="center" color="textPrimary" variant="h4">
                     Welcome
                   </Typography>
 
                   <Typography align="center" color="textSecondary" variant="body1">
-                    Enter the Modus Job Portal
+                    Enter the Modus Career Portal
                   </Typography>
                 </Box>
                 <TextField
@@ -111,7 +106,7 @@ function Login() {
                   value={values.password}
                   variant="outlined"
                 />
-                <Box my={2}>
+                <Box my={margin}>
                   <Button
                     id="Submit"
                     color="secondary"
@@ -127,13 +122,16 @@ function Login() {
                 <Typography color="textSecondary" variant="body2">
                   Don&apos;t Have an Account?
                   {' '}
+                  <Link component={RouterLink} to="/register" variant="body2">
+                    Register Now
+                  </Link>
                 </Typography>
               </form>
             )}
           </Formik>
-        </Container>
-      </CardContent>
-    </Card>
+        </CardContent>
+      </Grid>
+    </Grid>
   );
 }
 
