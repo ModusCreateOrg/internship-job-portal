@@ -20,9 +20,12 @@ const useStyles = makeStyles({
     height: '30rem',
   },
 });
+<<<<<<< HEAD
 
 const margin = 3;
 
+=======
+>>>>>>> 419e0d5fce82cc2402a19ab5a56a769ab6fb6b40
 function Login() {
   const classes = useStyles();
 
