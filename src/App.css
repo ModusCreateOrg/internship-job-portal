@@ -1,3 +1,8 @@
 .App {
   text-align: center;
 }
+
+body {
+  background: linear-gradient(90deg, #fe6b8b 30%, #ff8e53 90%);
+  height: 100vh;
+}
