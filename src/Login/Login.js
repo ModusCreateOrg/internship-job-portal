@@ -12,17 +12,14 @@ class LoginForm extends React.Component {
       password: '',
     };
 
-    this.handleUsernameChange = this.handleUsernameChange.bind(this);
-    this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleUsernameChange(event) {
-    this.setState({ username: event.target.value });
-  }
-
-  handlePasswordChange(event) {
-    this.setState({ password: event.target.value });
+  handleInputChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
   }
 
   handleSubmit(event) {
@@ -45,16 +42,18 @@ class LoginForm extends React.Component {
           id="username-field"
           label="Username"
           autoComplete="username"
+          name="username"
           value={username}
-          onChange={this.handleUsernameChange}
+          onChange={this.handleInputChange}
         />
         <TextField
           id="password-field"
           label="Password"
           type="password"
           autoComplete="current-password"
+          name="password"
           value={password}
-          onChange={this.handlePasswordChange}
+          onChange={this.handleInputChange}
         />
         <Button
           variant="outlined"
