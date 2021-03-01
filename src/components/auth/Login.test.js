@@ -1,17 +1,37 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import {
+  cleanup, render, screen, waitFor,
+} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import Login from './Login';
 
-test('allows the user to login successfully', async () => {
-  render(<Login />);
+afterEach(cleanup);
 
-  fireEvent.change(screen.getByLabelText('Username'), {
-    target: { value: 'demo' },
+test('successful login', async () => {
+  render(
+    <Router>
+      <Login />
+    </Router>,
+  );
+
+  userEvent.type(screen.getByLabelText('Username'), 'Demo');
+  userEvent.type(screen.getByLabelText('Password'), 'Password');
+
+  await waitFor(() => {
+    userEvent.click(screen.getByRole('button', { name: 'Login' }));
   });
+});
 
-  fireEvent.change(screen.getByLabelText('Password'), {
-    target: { value: 'password' },
+test('empty fields', async () => {
+  render(
+    <Router>
+      <Login />
+    </Router>,
+  );
+
+  await waitFor(() => {
+    userEvent.click(screen.getByRole('button', { name: 'Login' }));
+    expect(screen.getByText('Username is required'));
   });
-
-  fireEvent.click(screen.getByRole('button', { name: 'Login' }));
 });

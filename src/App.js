@@ -4,17 +4,22 @@ import { ApolloProvider } from '@apollo/client';
 import {
   BrowserRouter as Router, Switch, Route, Redirect,
 } from 'react-router-dom';
-import { ThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import apolloClient from './apollo';
 import NotFound from './components/404/NotFound';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
-import theme from './components/Theme';
+
+const theme = createMuiTheme({
+  typography: {
+    fontFamily: ['"Poppins"', 'Sans-Serif'].join(','),
+  },
+});
 
 function App() {
   return (
     <ApolloProvider client={apolloClient}>
-      <ThemeProvider theme={theme}>
+      <MuiThemeProvider theme={theme}>
         <Router>
           <Switch>
             <Redirect exact from="/" to="/login" />
@@ -29,7 +34,7 @@ function App() {
             </Route>
           </Switch>
         </Router>
-      </ThemeProvider>
+      </MuiThemeProvider>
     </ApolloProvider>
   );
 }
