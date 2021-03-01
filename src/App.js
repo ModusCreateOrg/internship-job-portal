@@ -5,31 +5,13 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect,
 } from 'react-router-dom';
 import apolloClient from './apollo';
 import Home from './Home/Home';
 import Login from './Login/Login';
 import Register from './Register/Register';
 import NotFound from './NotFound/NotFound';
-
-class PrivateRoute extends Route {
-  render() {
-    const loggedIn = false;
-    return (
-      loggedIn ? (
-        this.props.children
-      ) : (
-        <Redirect
-          to={{
-            pathname: '/login',
-            state: { from: this.props.location },
-          }}
-        />
-      )
-    );
-  }
-}
+import PrivateRoute from './PrivateRoute';
 
 function App() {
   return (
