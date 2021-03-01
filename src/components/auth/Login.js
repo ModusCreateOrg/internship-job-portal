@@ -20,6 +20,12 @@ const useStyles = makeStyles({
     height: '30rem',
   },
 });
+<<<<<<< HEAD
+=======
+
+const margin = 3;
+
+>>>>>>> master
 function Login() {
   const classes = useStyles();
 
@@ -66,7 +72,7 @@ function Login() {
               values,
             }) => (
               <form onSubmit={handleSubmit}>
-                <Box mb={3}>
+                <Box mb={margin}>
                   <Typography align="center" color="textPrimary" variant="h4">
                     Welcome
                   </Typography>
@@ -103,7 +109,7 @@ function Login() {
                   value={values.password}
                   variant="outlined"
                 />
-                <Box my={2}>
+                <Box my={margin}>
                   <Button
                     id="Submit"
                     color="secondary"
