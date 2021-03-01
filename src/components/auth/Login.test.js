@@ -1,37 +1,37 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import {
-  cleanup, render, screen, waitFor,
-} from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Login from './Login';
 
-afterEach(cleanup);
+describe('login validation', () => {
+  test('successful login', async () => {
+    render(
+      <Router>
+        <Login />
+      </Router>,
+    );
 
-test('successful login', async () => {
-  render(
-    <Router>
-      <Login />
-    </Router>,
-  );
+    userEvent.type(screen.getByLabelText('Username'), 'Demo');
+    userEvent.type(screen.getByLabelText('Password'), 'Password');
 
-  userEvent.type(screen.getByLabelText('Username'), 'Demo');
-  userEvent.type(screen.getByLabelText('Password'), 'Password');
-
-  await waitFor(() => {
-    userEvent.click(screen.getByRole('button', { name: 'Login' }));
+    await waitFor(() => {
+      userEvent.click(screen.getByRole('button', { name: 'Login' }));
+      expect(screen.getByRole('button', { name: 'Login' })).toBeDisabled();
+    });
   });
-});
 
-test('empty fields', async () => {
-  render(
-    <Router>
-      <Login />
-    </Router>,
-  );
+  test('empty fields errors', async () => {
+    render(
+      <Router>
+        <Login />
+      </Router>,
+    );
 
-  await waitFor(() => {
-    userEvent.click(screen.getByRole('button', { name: 'Login' }));
-    expect(screen.getByText('Username is required'));
+    await waitFor(() => {
+      userEvent.click(screen.getByRole('button', { name: 'Login' }));
+      expect(screen.getByText('Username is required')).toBeTruthy();
+      expect(screen.getByText('Password is required')).toBeTruthy();
+    });
   });
 });
