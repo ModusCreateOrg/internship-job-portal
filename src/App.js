@@ -7,10 +7,10 @@ import {
   Route,
 } from 'react-router-dom';
 import apolloClient from './apollo';
-import Home from './Home/Home';
-import Login from './Login/Login';
-import Register from './Register/Register';
-import NotFound from './NotFound/NotFound';
+import Home from './Home';
+import Login from './Login';
+import Register from './Register';
+import NotFound from './NotFound';
 import PrivateRoute from './PrivateRoute';
 
 function App() {
