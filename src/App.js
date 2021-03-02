@@ -12,22 +12,28 @@ import Login from './Login';
 import Register from './Register';
 import NotFound from './NotFound';
 import PrivateRoute from './PrivateRoute';
+import {
+  HOME_PATH,
+  LOGIN_PATH,
+  REGISTER_PATH,
+  NOT_FOUND_PATH,
+} from './paths';
 
 function App() {
   return (
     <ApolloProvider client={apolloClient}>
       <Router>
         <Switch>
-          <PrivateRoute exact path="/">
+          <PrivateRoute exact path={HOME_PATH}>
             <Home />
           </PrivateRoute>
-          <Route path="/login">
+          <Route path={LOGIN_PATH}>
             <Login />
           </Route>
-          <Route path="/register">
+          <Route path={REGISTER_PATH}>
             <Register />
           </Route>
-          <Route path="*">
+          <Route path={NOT_FOUND_PATH}>
             <NotFound />
           </Route>
         </Switch>

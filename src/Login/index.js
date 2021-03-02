@@ -3,6 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import { Link } from 'react-router-dom';
+import { REGISTER_PATH } from '../paths';
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -58,7 +59,7 @@ function Login() {
           Login
         </Button>
       </form>
-      <Button variant="text" color="default" component={Link} to="/register">
+      <Button variant="text" color="default" component={Link} to={REGISTER_PATH}>
         Register
       </Button>
     </Card>
