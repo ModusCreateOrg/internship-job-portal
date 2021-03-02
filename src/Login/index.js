@@ -17,7 +17,7 @@ function Login() {
   };
 
   const handleSubmit = () => {
-    console.log(username, password);
+
   };
 
   return (

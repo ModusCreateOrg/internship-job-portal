@@ -23,7 +23,7 @@ function Register() {
   };
 
   const handleSubmit = () => {
-    console.log(username, firstName, lastName, password);
+
   };
 
   return (
