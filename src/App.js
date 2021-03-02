@@ -6,9 +6,9 @@ import {
 } from 'react-router-dom';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import apolloClient from './apollo';
-import NotFound from './components/404/NotFound';
-import Login from './components/auth/Login';
-import Register from './components/auth/Register';
+import NotFound from './pages/404/NotFound';
+import Login from './pages/auth/Login';
+import Register from './pages/auth/Register';
 
 const theme = createMuiTheme({
   typography: {
