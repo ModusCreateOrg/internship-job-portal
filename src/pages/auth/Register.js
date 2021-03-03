@@ -9,7 +9,7 @@ import {
 
 import CustomCard from '../../components/CustomCard/CustomCard';
 
-const REGISTER_USER = gql`
+export const REGISTER_USER = gql`
   mutation createUser(
     $username: String!
     $password: String!
@@ -27,6 +27,8 @@ const REGISTER_USER = gql`
       contactInfoId: $contactInfoId
     ) {
       username
+      firstName
+      lastName
     }
   }
 `;
@@ -38,7 +40,7 @@ function Register() {
 
   const [registerUser] = useMutation(REGISTER_USER, {
     onCompleted: () => {
-      history.push('/');
+      history.push('/*');
     },
     onError: () => {
       console.log('An error occured while submitting data');

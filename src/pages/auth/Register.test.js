@@ -2,14 +2,34 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import Register from './Register';
+import { MockedProvider } from '@apollo/client/testing';
+import Register, { REGISTER_USER } from './Register';
+
+const mocks = [
+  {
+    request: {
+      query: REGISTER_USER,
+      variables: {
+        userame: 'Jeff',
+        password: 'Bezos',
+      },
+    },
+    result: {
+      data: {
+        user: { id: '1', username: 'Buck' },
+      },
+    },
+  },
+];
 
 describe('register validation', () => {
   test('successful register', async () => {
     render(
-      <Router>
-        <Register />
-      </Router>,
+      <MockedProvider mocks={mocks} addTypename={false}>
+        <Router>
+          <Register />
+        </Router>
+      </MockedProvider>,
     );
 
     userEvent.type(screen.getByLabelText('Username'), 'Demo');
@@ -23,9 +43,11 @@ describe('register validation', () => {
 
   test('empty fields errors', async () => {
     render(
-      <Router>
-        <Register />
-      </Router>,
+      <MockedProvider mocks={mocks} addTypename={false}>
+        <Router>
+          <Register />
+        </Router>
+      </MockedProvider>,
     );
 
     await waitFor(() => {

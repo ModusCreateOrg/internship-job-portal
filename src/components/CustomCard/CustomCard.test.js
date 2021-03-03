@@ -4,6 +4,10 @@ import CustomCard from './CustomCard';
 
 describe('Custom Card', () => {
   test('should render button', async () => {
-    render(<CustomCard />);
+    render(
+      <CustomCard>
+        <div> Hello </div>
+      </CustomCard>,
+    );
   });
 });
