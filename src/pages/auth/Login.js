@@ -5,13 +5,32 @@ import { Formik } from 'formik';
 import {
   Box, Button, CardContent, Link, TextField, Typography,
 } from '@material-ui/core';
-
+import { gql, useLazyQuery } from '@apollo/client';
 import CustomCard from '../../components/CustomCard/CustomCard';
+
+export const LOGIN_USER = gql`
+  query loginUser($username: String!, $password: String!) {
+    loginUser(username: $username, password: $password) {
+      username
+      password
+    }
+  }
+`;
 
 const margin = 3;
 
 function Login() {
   const history = useHistory();
+
+  const [loginUser] = useLazyQuery(LOGIN_USER, {
+    onCompleted: () => {
+      history.push('/*');
+    },
+    onError: () => {
+      console.log('LOGIN ERROR: Problem while submitting data');
+      alert('LOGIN ERROR: Problem while submitting data');
+    },
+  });
 
   return (
     <CustomCard>
@@ -29,9 +48,13 @@ function Login() {
               .max(255)
               .required('Password is required'),
           })}
-          onSubmit={(data) => {
-            console.log(data);
-            history.push('*');
+          onSubmit={(inputs) => {
+            loginUser({
+              variables: {
+                username: inputs.username,
+                password: inputs.password,
+              },
+            });
           }}
         >
           {({
@@ -60,6 +83,7 @@ function Login() {
                 type="username"
                 value={values.username}
                 variant="outlined"
+                autoComplete="off"
               />
               <TextField
                 id="Password"
@@ -74,6 +98,7 @@ function Login() {
                 type="password"
                 value={values.password}
                 variant="outlined"
+                autoComplete="off"
               />
               <Box my={margin}>
                 <Button
