@@ -18,6 +18,7 @@ function RegisterForm(props) {
 
   return (
     <form
+      aria-label="form"
       style={{
         display: 'flex',
         flexDirection: 'column',

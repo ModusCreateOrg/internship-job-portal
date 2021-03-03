@@ -8,8 +8,12 @@ import PropTypes from 'prop-types';
 import { LOGIN_PATH } from './paths';
 
 function PrivateRoute(props) {
-  const loggedIn = false;
-  const { path, exact, component } = props;
+  const {
+    path,
+    exact,
+    component,
+    loggedIn,
+  } = props;
   const location = useLocation();
 
   return (
@@ -30,12 +34,14 @@ PrivateRoute.defaultProps = {
   path: '/',
   exact: false,
   component: undefined,
+  loggedIn: false,
 };
 
 PrivateRoute.propTypes = {
   path: PropTypes.string,
   exact: PropTypes.bool,
-  component: PropTypes.element,
+  component: PropTypes.func,
+  loggedIn: PropTypes.bool,
 };
 
 export default PrivateRoute;

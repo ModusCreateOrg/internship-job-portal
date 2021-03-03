@@ -3,9 +3,7 @@ import { render, screen } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Home from './index';
 
-test('renders the route menu', () => {
+it('renders the home page', () => {
   render(<Router><Home /></Router>);
-  expect(screen.getByText('English')).toBeInTheDocument();
-  expect(screen.getByText('Portuguese')).toBeInTheDocument();
-  expect(screen.getByText('Spanish')).toBeInTheDocument();
+  expect(screen.getByText('Home')).toBeInTheDocument();
 });

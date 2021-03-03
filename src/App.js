@@ -24,9 +24,11 @@ function App() {
     <ApolloProvider client={apolloClient}>
       <Router>
         <Switch>
-          <PrivateRoute exact path={HOME_PATH}>
-            <Home />
-          </PrivateRoute>
+          <PrivateRoute
+            exact
+            path={HOME_PATH}
+            component={Home}
+          />
           <Route path={LOGIN_PATH}>
             <Login />
           </Route>
