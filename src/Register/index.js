@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
+import RegisterForm from './RegisterForm';
 
 function Register() {
   const [username, setUsername] = useState('');
@@ -21,10 +20,7 @@ function Register() {
   const handlePasswordInput = (event) => {
     setPassword(event.target.value);
   };
-
-  const handleSubmit = () => {
-
-  };
+  const handleSubmit = () => {};
 
   return (
     <Card style={{
@@ -34,50 +30,17 @@ function Register() {
       alignItems: 'center',
     }}
     >
-      <form
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-        }}
+      <RegisterForm
+        username={username}
+        onUsernameChange={handleUsernameInput}
+        firstName={firstName}
+        onFirstNameChange={handleFirstNameInput}
+        lastName={lastName}
+        onLastNameChange={handleLastNameInput}
+        password={password}
+        onPasswordChange={handlePasswordInput}
         onSubmit={handleSubmit}
-      >
-        <TextField
-          id="username-field"
-          label="Username"
-          autoComplete="username"
-          value={username}
-          onChange={handleUsernameInput}
-        />
-        <TextField
-          id="firstName-field"
-          label="First Name"
-          autoComplete="given-name"
-          value={firstName}
-          onChange={handleFirstNameInput}
-        />
-        <TextField
-          id="lastName-field"
-          label="Last Name"
-          autoComplete="family-name"
-          value={lastName}
-          onChange={handleLastNameInput}
-        />
-        <TextField
-          id="password-field"
-          label="Password"
-          type="password"
-          autoComplete="new-password"
-          value={password}
-          onChange={handlePasswordInput}
-        />
-        <Button
-          variant="outlined"
-          color="primary"
-          type="submit"
-        >
-          Register
-        </Button>
-      </form>
+      />
     </Card>
   );
 }

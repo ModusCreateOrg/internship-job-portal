@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
+import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import { REGISTER_PATH } from '../paths';
+import LoginForm from './LoginForm';
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -15,10 +15,7 @@ function Login() {
   const handlePasswordInput = (event) => {
     setPassword(event.target.value);
   };
-
-  const handleSubmit = () => {
-
-  };
+  const handleSubmit = () => {};
 
   return (
     <Card style={{
@@ -28,37 +25,13 @@ function Login() {
       alignItems: 'center',
     }}
     >
-      <form
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-        }}
+      <LoginForm
+        username={username}
+        onUsernameChange={handleUsernameInput}
+        password={password}
+        onPasswordChange={handlePasswordInput}
         onSubmit={handleSubmit}
-      >
-        <TextField
-          id="username-field"
-          label="Username"
-          autoComplete="username"
-          value={username}
-          onChange={handleUsernameInput}
-        />
-        <TextField
-          id="password-field"
-          label="Password"
-          type="password"
-          autoComplete="current-password"
-          name="password"
-          value={password}
-          onChange={handlePasswordInput}
-        />
-        <Button
-          variant="outlined"
-          color="primary"
-          type="submit"
-        >
-          Login
-        </Button>
-      </form>
+      />
       <Button variant="text" color="default" component={Link} to={REGISTER_PATH}>
         Register
       </Button>
