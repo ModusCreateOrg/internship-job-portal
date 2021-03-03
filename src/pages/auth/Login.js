@@ -27,8 +27,7 @@ function Login() {
       history.push('/*');
     },
     onError: () => {
-      console.log('LOGIN ERROR: Problem while submitting data');
-      alert('LOGIN ERROR: Problem while submitting data');
+      // Add error popup
     },
   });
 

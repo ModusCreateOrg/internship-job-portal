@@ -43,8 +43,7 @@ function Register() {
       history.push('/*');
     },
     onError: () => {
-      console.log('An error occured while submitting data');
-      alert('Error while submitting data!');
+      // Add error popup
     },
   });
 
