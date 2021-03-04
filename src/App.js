@@ -7,27 +7,36 @@ import {
   Route,
 } from 'react-router-dom';
 import apolloClient from './apollo';
-import English from './English';
-import Portuguese from './Portuguese';
-import Spanish from './Spanish';
 import Home from './Home';
+import Login from './Login';
+import Register from './Register';
+import NotFound from './NotFound';
+import PrivateRoute from './PrivateRoute';
+import {
+  HOME_PATH,
+  LOGIN_PATH,
+  REGISTER_PATH,
+  NOT_FOUND_PATH,
+} from './paths';
 
 function App() {
   return (
     <ApolloProvider client={apolloClient}>
       <Router>
         <Switch>
-          <Route path="/home">
-            <Home />
+          <PrivateRoute
+            exact
+            path={HOME_PATH}
+            component={Home}
+          />
+          <Route path={LOGIN_PATH}>
+            <Login />
           </Route>
-          <Route path="/english">
-            <English />
+          <Route path={REGISTER_PATH}>
+            <Register />
           </Route>
-          <Route path="/portuguese">
-            <Portuguese />
-          </Route>
-          <Route path="/spanish">
-            <Spanish />
+          <Route path={NOT_FOUND_PATH}>
+            <NotFound />
           </Route>
         </Switch>
       </Router>
