@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
 import RegisterForm from './RegisterForm';
+import useAuth from '../use-auth';
 
 function Register() {
+  const auth = useAuth();
+  const history = useHistory();
   const [username, setUsername] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -20,7 +24,11 @@ function Register() {
   const handlePasswordInput = (event) => {
     setPassword(event.target.value);
   };
-  const handleSubmit = () => {};
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    await auth.register(username, firstName, lastName, password);
+    history.push('/');
+  };
 
   return (
     <Card style={{

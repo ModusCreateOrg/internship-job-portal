@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { REGISTER_PATH } from '../paths';
 import LoginForm from './LoginForm';
+import useAuth from '../use-auth';
 
 function Login() {
+  const auth = useAuth();
+  const history = useHistory();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -15,7 +18,11 @@ function Login() {
   const handlePasswordInput = (event) => {
     setPassword(event.target.value);
   };
-  const handleSubmit = () => {};
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    await auth.signIn(username, password);
+    history.push('/');
+  };
 
   return (
     <Card style={{
